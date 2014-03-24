@@ -1,12 +1,9 @@
 
-http://username.github.io/sitemap.txt
-http://username.github.io/atom.xml
-http://username.github.io/categories.html
-http://username.github.io/index.html
-http://username.github.io/rss.xml
-http://username.github.io/tags.html
-http://username.github.io/pages.html
-http://username.github.io/archive.html
-
-http://username.github.io/2014/03/24/dadsa
-http://username.github.io/lessons/2011/12/29/jekyll-introduction
+http://www.whybert.com/sitemap.txt
+http://www.whybert.com/atom.xml
+http://www.whybert.com/categories.html
+http://www.whybert.com/index.html
+http://www.whybert.com/rss.xml
+http://www.whybert.com/tags.html
+http://www.whybert.com/pages.html
+http://www.whybert.com/archive.html
