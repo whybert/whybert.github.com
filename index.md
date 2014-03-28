@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Posts
+title: Whybert Blog
+page_title: Posts
 tagline: 
 ---
 {% include JB/setup %}
