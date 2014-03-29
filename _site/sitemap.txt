@@ -7,3 +7,5 @@ http://www.whybert.com/rss.xml
 http://www.whybert.com/tags.html
 http://www.whybert.com/pages.html
 http://www.whybert.com/archive.html
+
+http://www.whybert.com/2014/03/30/c

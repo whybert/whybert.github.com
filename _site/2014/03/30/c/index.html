@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>读《c专家编程》总结</title>
+    <meta name="description" content="">
+    <meta name="author" content="Huaiyuan Wang">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">Whybert Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>读《c专家编程》总结 </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>30 March 2014</span>
+    </div>
+    <div class="content">
+      <h3 id="c">读《C专家编程》总结</h3>
+
+<p>去年年底读的，时间有点久了，读的时候的很多体会也忘了，单对我感兴趣的内容做个简单总结。正好最近看到知乎上程序员约架的事，我只能说，我C语言很渣，写错什么莫怪。。</p>
+
+<h4 id="1c">1、C的历史：</h4>
+
+<p>C语言的产生是源于Multics工程。Multics失败了，之后Ken Thompson和Dennis Ritchie总结教训用汇编编写了UNIX，因为用汇编写UNIX太笨拙，所以Thompson创建了B语言，并尝试用B语言进行UNIX系统编程，但是B语言存在数据类型和效率等方面的问题，导致Thompson没能用B语言实现UNIX。之后Dennis Ritchie解决了B语言的一些问题，创立了New B语言，不久后这种语言被称为了C语言，UNIX也开始用C实现了。这时（1972年）的C还是早期的C,1978年出版了TCPL，由这个书定义的C称作K&amp;R C，1989年ANSI C标准最终形成（C89）。之后又有了C99和C11，这都在《C专家编程》出版之后了。</p>
+
+<h4 id="2cansi_c">2、C和ANSI C的一些特点：</h4>
+
+<p>C语言的许多特性是方便编译器设计者建立的。</p>
+
+<p>C编译器不曾实现的功能是通过C预处理器和运行时函数库（runtime library）实现的，且绝大多数库函数和辅助程序需要程序员显式调用。</p>
+
+<p>ANSI C的几个术语:</p>
+
+<pre><code>unportable code: implement ation-defined, unspecified
+
+bad code: undefined, constraint
+
+portable code: strictly-comforming</code></pre>
+
+<p>为了保证代码的可移植，只能使用已确定的特性、不突破编译限制、不产生依赖由编译器定义的或未确定的或未定义的特性的输出。</p>
+
+<h4 id="3c">3、C的一些槽点：</h4>
+
+<p>一个符号具有多种含义：* &amp; void static () 等</p>
+
+<p>复杂的语法声明：左右法则、typedef</p>
+
+<p>不合理的优先级顺序：先乘除后加减，其他一律加括号</p>
+
+<p>类型转换规则：unsigned与signed比较时signed转换为unsigned等</p>
+
+<p>其他的一些细节，如switch默认fall through等</p>
+
+<h4 id="4">4、数组和指针：</h4>
+
+<p>数组不是指针，在某些情况下数组可以“看作”是指针。数组直接访问数据，指针间接访问数据，即用指针时CPU要多一次访问内存的操作。</p>
+
+<p>在编译时编译器要根据上下文判断一个符号指的是符号的地址（左值）还是符号的值（右值），而表达式内的数组名可“看作”指针，其地址在编译时可知，即不需要解引用，此时若把数组“等同”于指针，则会多一次解引用操作。所以除作为函数参数等情况外定义与声明应当匹配。</p>
+
+<p>对数组取地址实际上会得到一个指向数组的指针。多维数组在由编译器改写为行参时，数组的数组会被改写为数组的指针，而不是指针的指针。</p>
+
+<h4 id="5">5、运行时数据结构：</h4>
+
+<p>a.out：魔数、BSS、数据段、文本段等等。</p>
+
+<p>运行时数据结构：堆栈、活动记录、数据、堆等。</p>
+
+<p>setjmp, longjmp: setjmp(jmp_buf j);longjmp(jmp_buf j, int i);</p>
+
+<h4 id="6">6、总结：</h4>
+
+<p>其实作者在书里讲了很多故事，比单纯的技术部分要有趣的多，技术部分的举例很多也很经典。这本书能作为C语言的经典进阶书之一，我觉得一是技术讲的精炼透彻，二就是作者高超的吐槽和情景分析技巧能引发读者对语言更深层的兴趣。书里还讲了链接装载、内存等内容，这方面的书我推荐看《程序员的自我修养》。</p>
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#C-ref">C <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev disabled"><a>&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2014 Huaiyuan Wang
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
